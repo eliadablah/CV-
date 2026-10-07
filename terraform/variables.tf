@@ -48,7 +48,7 @@ variable "monthly_budget_usd" {
 variable "github_repo" {
   description = "GitHub repository (owner/name) allowed to deploy through GitHub Actions"
   type        = string
-  default     = "eliadablah/eliadablahcv"
+  default     = "eliadablah/CV-"
 }
 
 variable "create_github_oidc_provider" {
