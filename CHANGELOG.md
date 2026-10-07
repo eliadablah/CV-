@@ -17,7 +17,7 @@
 
 ### Content — Add UTC student portal project
 
-- Added a third project card, "Student Portal on a 3-Tier AWS Network", linking to `https://github.com/eliadablah/utcapp`.
+- Added a third project card, "UTC Student Portal: 3-Tier AWS Network", linking to `https://github.com/eliadablah/utcapp`.
 - FAQ chat "projects" answer now mentions all three projects.
 
 ## 2026-10-05
