@@ -1,0 +1,95 @@
+# My deploy pipeline.
+#
+# Every time I push to the main branch, GitHub does this for me:
+#   1. test   - runs my backend tests. If one fails, nothing is deployed.
+#   2. deploy - builds my API into a Docker image, sends it to ECR, tells
+#               Lambda to use it, uploads my site to S3, refreshes CloudFront,
+#               and checks that my API still answers.
+#
+# I don't store any AWS keys in GitHub. It logs in with OIDC (see terraform/cicd.tf).
+#
+# The pipeline needs these repository variables. I get the values from
+# "terraform output" and add them under
+# Settings > Secrets and variables > Actions > Variables:
+#   AWS_ROLE_ARN, ECR_REPOSITORY_URL, LAMBDA_FUNCTION_NAME,
+#   FRONTEND_BUCKET, DISTRIBUTION_ID, SITE_URL
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write # lets the pipeline ask GitHub for the OIDC login pass
+  contents: read
+
+# I never let two deploys run at the same time
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  AWS_REGION: us-east-1
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run backend unit tests
+        working-directory: backend
+        run: python -m unittest discover -s tests -t .
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get short-lived AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      # I label each image with the commit id. That way I always know which
+      # code is live, and I can go back to an older image if something breaks.
+      - name: Build and push the cv-api image
+        env:
+          IMAGE: ${{ vars.ECR_REPOSITORY_URL }}:${{ github.sha }}
+        run: |
+          # --provenance=false keeps the image in a format Lambda can read
+          docker build --platform linux/amd64 --provenance=false -t "$IMAGE" backend
+          docker push "$IMAGE"
+
+      - name: Point Lambda at the new image
+        env:
+          IMAGE: ${{ vars.ECR_REPOSITORY_URL }}:${{ github.sha }}
+        run: |
+          aws lambda update-function-code \
+            --function-name "${{ vars.LAMBDA_FUNCTION_NAME }}" \
+            --image-uri "$IMAGE" > /dev/null
+          aws lambda wait function-updated \
+            --function-name "${{ vars.LAMBDA_FUNCTION_NAME }}"
+
+      - name: Upload the front end to S3
+        run: aws s3 sync frontend "s3://${{ vars.FRONTEND_BUCKET }}" --delete
+
+      - name: Refresh CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.DISTRIBUTION_ID }}" \
+            --paths "/*" > /dev/null
+
+      # My proof the deploy worked. If my API does not answer, the pipeline fails.
+      - name: Health check
+        run: curl --fail --silent --show-error --retry 5 --retry-delay 5 "${{ vars.SITE_URL }}/api/health"

@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 920" font-family="Arial, Helvetica, sans-serif">
+  <!-- My architecture diagram. It is plain SVG, so I can edit the text and boxes right here. -->
+  <defs>
+    <marker id="arrow-user" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5a30c8"/></marker>
+    <marker id="arrow-internal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1b1f27"/></marker>
+    <marker id="arrow-link" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b7480"/></marker>
+    <marker id="arrow-deploy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ed7100"/></marker>
+  </defs>
+
+  <rect width="1400" height="920" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="30" y="48" font-size="28" font-weight="700" fill="#1b1f27">eliadablahcv &#8211; AWS Architecture</text>
+  <text x="1370" y="48" font-size="15" fill="#57616d" text-anchor="end">My low-cost, serverless CV site</text>
+
+  <!-- ================= Left column: the visitor's path ================= -->
+  <rect x="38" y="80" width="170" height="68" rx="8" fill="#ffffff" stroke="#b9c0c9" stroke-width="1.5"/>
+  <text x="123" y="109" font-size="15" font-weight="700" fill="#1b1f27" text-anchor="middle">Visitor</text>
+  <text x="123" y="130" font-size="13" fill="#57616d" text-anchor="middle">(recruiter / me)</text>
+
+  <line x1="123" y1="148" x2="123" y2="188" stroke="#5a30c8" stroke-width="2" marker-end="url(#arrow-user)"/>
+
+  <rect x="95" y="190" width="56" height="56" rx="8" fill="#8c4fff"/>
+  <text x="123" y="224" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">R53</text>
+  <text x="123" y="266" font-size="14" font-weight="700" fill="#1b1f27" text-anchor="middle">Amazon Route 53</text>
+  <text x="123" y="283" font-size="12.5" fill="#57616d" text-anchor="middle">cv.eliadablah.com</text>
+
+  <line x1="123" y1="292" x2="123" y2="328" stroke="#5a30c8" stroke-width="2" marker-end="url(#arrow-user)"/>
+
+  <rect x="95" y="330" width="56" height="56" rx="8" fill="#8c4fff"/>
+  <text x="123" y="364" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">CF</text>
+  <text x="123" y="406" font-size="14" font-weight="700" fill="#1b1f27" text-anchor="middle">Amazon CloudFront</text>
+  <text x="123" y="423" font-size="12.5" fill="#57616d" text-anchor="middle">CDN + HTTPS, one front door</text>
+
+  <line x1="123" y1="434" x2="123" y2="498" stroke="#1b1f27" stroke-width="2" marker-end="url(#arrow-internal)"/>
+  <text x="133" y="470" font-size="12" fill="#57616d">pages, CSS, JS</text>
+
+  <rect x="95" y="500" width="56" height="56" rx="8" fill="#7aa116"/>
+  <text x="123" y="534" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">S3</text>
+  <text x="123" y="576" font-size="14" font-weight="700" fill="#1b1f27" text-anchor="middle">Amazon S3 (front end)</text>
+  <text x="123" y="593" font-size="12.5" fill="#57616d" text-anchor="middle">Private bucket, static site</text>
+  <text x="123" y="610" font-size="12.5" fill="#57616d" text-anchor="middle">Only CloudFront can read it</text>
+
+  <!-- ACM -->
+  <rect x="245" y="80" width="180" height="92" rx="8" fill="#ffffff" stroke="#b9c0c9" stroke-width="1.5"/>
+  <rect x="257" y="92" width="40" height="40" rx="6" fill="#dd344c"/>
+  <text x="277" y="117" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">ACM</text>
+  <text x="305" y="107" font-size="13" font-weight="700" fill="#1b1f27">AWS Certificate</text>
+  <text x="305" y="124" font-size="13" font-weight="700" fill="#1b1f27">Manager</text>
+  <text x="257" y="154" font-size="12" fill="#57616d">TLS certificate for CloudFront</text>
+  <line x1="300" y1="172" x2="155" y2="338" stroke="#6b7480" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow-link)"/>
+
+  <!-- CloudFront -> API Gateway -->
+  <path d="M151 366 H438 V195 H488" fill="none" stroke="#5a30c8" stroke-width="2" marker-end="url(#arrow-user)"/>
+  <rect x="232" y="376" width="128" height="40" rx="6" fill="#f3efff" stroke="#8c4fff" stroke-width="1.2"/>
+  <text x="296" y="393" font-size="12.5" font-weight="700" fill="#5a30c8" text-anchor="middle">HTTPS API requests</text>
+  <text x="296" y="409" font-size="12.5" fill="#5a30c8" text-anchor="middle">/api/*</text>
+
+  <!-- ================= Center: serverless backend ================= -->
+  <rect x="450" y="80" width="530" height="560" rx="10" fill="#f7fbf4" stroke="#3f8624" stroke-width="2"/>
+  <rect x="450" y="80" width="40" height="34" rx="6" fill="#3f8624"/>
+  <text x="470" y="103" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">AWS</text>
+  <text x="500" y="103" font-size="15" font-weight="700" fill="#1b1f27">Region us-east-1 &#8211; serverless back end</text>
+  <text x="490" y="132" font-size="12.5" fill="#57616d">No VPC, no NAT gateways, no load balancer, nothing running while idle</text>
+
+  <!-- API Gateway -->
+  <rect x="490" y="150" width="450" height="90" rx="8" fill="#ffffff" stroke="#8c4fff" stroke-width="1.5"/>
+  <rect x="506" y="167" width="56" height="56" rx="8" fill="#8c4fff"/>
+  <text x="534" y="201" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">API</text>
+  <text x="578" y="184" font-size="15" font-weight="700" fill="#1b1f27">Amazon API Gateway (HTTP API)</text>
+  <text x="578" y="204" font-size="13" fill="#57616d">Receives /api/* and passes it to Lambda</text>
+  <text x="578" y="222" font-size="13" fill="#57616d">Throttled to 2 requests/second (spam and cost guard)</text>
+
+  <line x1="715" y1="240" x2="715" y2="308" stroke="#1b1f27" stroke-width="2" marker-end="url(#arrow-internal)"/>
+  <text x="725" y="279" font-size="12" fill="#57616d">invoke</text>
+
+  <!-- Lambda -->
+  <rect x="490" y="310" width="450" height="100" rx="8" fill="#ffffff" stroke="#ed7100" stroke-width="1.5"/>
+  <rect x="506" y="332" width="56" height="56" rx="8" fill="#ed7100"/>
+  <text x="534" y="369" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">&#955;</text>
+  <text x="578" y="342" font-size="15" font-weight="700" fill="#1b1f27">AWS Lambda &#8211; cv-api</text>
+  <text x="578" y="362" font-size="13" fill="#57616d">Runs the cv-api Docker image (Python)</text>
+  <text x="578" y="380" font-size="13" fill="#57616d">GET /api/health &#183; GET, POST /api/visits</text>
+  <text x="578" y="398" font-size="13" fill="#57616d">POST /api/contact</text>
+
+  <line x1="715" y1="410" x2="715" y2="488" stroke="#1b1f27" stroke-width="2" marker-end="url(#arrow-internal)"/>
+  <text x="725" y="454" font-size="12" fill="#57616d">read / write</text>
+
+  <!-- DynamoDB -->
+  <rect x="490" y="490" width="450" height="100" rx="8" fill="#ffffff" stroke="#c925d1" stroke-width="1.5"/>
+  <rect x="506" y="512" width="56" height="56" rx="8" fill="#c925d1"/>
+  <text x="534" y="546" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">DDB</text>
+  <text x="578" y="522" font-size="15" font-weight="700" fill="#1b1f27">Amazon DynamoDB (on-demand)</text>
+  <text x="578" y="542" font-size="13" fill="#57616d">Visit counter + contact messages</text>
+  <text x="578" y="560" font-size="13" fill="#57616d">Encrypted at rest &#183; pay per request</text>
+  <text x="578" y="578" font-size="13" fill="#57616d">Messages auto-delete after 90 days</text>
+
+  <text x="715" y="622" font-size="13.5" font-weight="700" fill="#3f8624" text-anchor="middle">Estimated cost: under $1 a month (about $145 with always-on servers)</text>
+
+  <!-- Lambda <-> managed services -->
+  <path d="M1023 156 H995 V348 H942" fill="none" stroke="#ed7100" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow-deploy)"/>
+  <path d="M940 372 H1008 V241 H1023" fill="none" stroke="#6b7480" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow-link)"/>
+  <path d="M940 384 H1014 V326 H1023" fill="none" stroke="#6b7480" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow-link)"/>
+  <line x1="1190" y1="362" x2="1190" y2="373" stroke="#6b7480" stroke-width="1.5" marker-end="url(#arrow-link)"/>
+
+  <!-- ================= Right column: managed services ================= -->
+  <rect x="1010" y="80" width="360" height="560" rx="10" fill="#ffffff" stroke="#b9c0c9" stroke-width="1.5"/>
+  <rect x="1010" y="80" width="360" height="30" rx="6" fill="#1a2b5e"/>
+  <text x="1190" y="100" font-size="13.5" font-weight="700" fill="#ffffff" text-anchor="middle">AWS MANAGED SERVICES</text>
+
+  <g>
+    <rect x="1025" y="120" width="330" height="72" rx="8" fill="#ffffff" stroke="#d8dde3"/>
+    <rect x="1037" y="134" width="44" height="44" rx="6" fill="#ed7100"/>
+    <text x="1059" y="161" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">ECR</text>
+    <text x="1093" y="150" font-size="14" font-weight="700" fill="#1b1f27">Amazon ECR</text>
+    <text x="1093" y="170" font-size="12.5" fill="#57616d">Private registry for the cv-api image</text>
+  </g>
+  <g>
+    <rect x="1025" y="205" width="330" height="72" rx="8" fill="#ffffff" stroke="#d8dde3"/>
+    <rect x="1037" y="219" width="44" height="44" rx="6" fill="#e7157b"/>
+    <text x="1059" y="246" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">SES</text>
+    <text x="1093" y="235" font-size="14" font-weight="700" fill="#1b1f27">Amazon SES</text>
+    <text x="1093" y="255" font-size="12.5" fill="#57616d">Emails each contact message to me</text>
+  </g>
+  <g>
+    <rect x="1025" y="290" width="330" height="72" rx="8" fill="#ffffff" stroke="#d8dde3"/>
+    <rect x="1037" y="304" width="44" height="44" rx="6" fill="#e7157b"/>
+    <text x="1059" y="331" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">CW</text>
+    <text x="1093" y="320" font-size="14" font-weight="700" fill="#1b1f27">Amazon CloudWatch</text>
+    <text x="1093" y="340" font-size="12.5" fill="#57616d">Logs (14 days) + error alarm</text>
+  </g>
+  <g>
+    <rect x="1025" y="375" width="330" height="72" rx="8" fill="#ffffff" stroke="#d8dde3"/>
+    <rect x="1037" y="389" width="44" height="44" rx="6" fill="#e7157b"/>
+    <text x="1059" y="416" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">SNS</text>
+    <text x="1093" y="405" font-size="14" font-weight="700" fill="#1b1f27">Amazon SNS</text>
+    <text x="1093" y="425" font-size="12.5" fill="#57616d">Sends the alarm as an email alert</text>
+  </g>
+  <g>
+    <rect x="1025" y="460" width="330" height="72" rx="8" fill="#ffffff" stroke="#d8dde3"/>
+    <rect x="1037" y="474" width="44" height="44" rx="6" fill="#dd344c"/>
+    <text x="1059" y="501" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">IAM</text>
+    <text x="1093" y="490" font-size="14" font-weight="700" fill="#1b1f27">AWS IAM</text>
+    <text x="1093" y="510" font-size="12.5" fill="#57616d">Least-privilege roles &#183; GitHub OIDC</text>
+  </g>
+  <g>
+    <rect x="1025" y="545" width="330" height="72" rx="8" fill="#ffffff" stroke="#d8dde3"/>
+    <rect x="1037" y="559" width="44" height="44" rx="6" fill="#7aa116"/>
+    <text x="1059" y="588" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">$</text>
+    <text x="1093" y="575" font-size="14" font-weight="700" fill="#1b1f27">AWS Budgets</text>
+    <text x="1093" y="595" font-size="12.5" fill="#57616d">Emails me at 80% of $10 a month</text>
+  </g>
+
+  <!-- ================= Bottom row ================= -->
+  <!-- Legend -->
+  <rect x="30" y="670" width="300" height="225" rx="8" fill="#ffffff" stroke="#b9c0c9" stroke-width="1.5"/>
+  <text x="50" y="698" font-size="14" font-weight="700" fill="#1b1f27">LEGEND</text>
+  <line x1="50" y1="724" x2="100" y2="724" stroke="#5a30c8" stroke-width="2" marker-end="url(#arrow-user)"/>
+  <text x="114" y="728" font-size="13" fill="#1b1f27">Visitor / API request</text>
+  <line x1="50" y1="754" x2="100" y2="754" stroke="#1b1f27" stroke-width="2" marker-end="url(#arrow-internal)"/>
+  <text x="114" y="758" font-size="13" fill="#1b1f27">Internal traffic</text>
+  <line x1="50" y1="784" x2="100" y2="784" stroke="#ed7100" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow-deploy)"/>
+  <text x="114" y="788" font-size="13" fill="#1b1f27">Image pull / deploy</text>
+  <line x1="50" y1="814" x2="100" y2="814" stroke="#6b7480" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow-link)"/>
+  <text x="114" y="818" font-size="13" fill="#1b1f27">AWS service link</text>
+  <rect x="50" y="836" width="50" height="22" rx="4" fill="#f7fbf4" stroke="#3f8624" stroke-width="1.5"/>
+  <text x="114" y="852" font-size="13" fill="#1b1f27">AWS region</text>
+  <text x="50" y="882" font-size="12" fill="#57616d">All infrastructure is defined in Terraform</text>
+
+  <!-- Notes -->
+  <rect x="350" y="670" width="560" height="225" rx="8" fill="#ffffff" stroke="#b9c0c9" stroke-width="1.5"/>
+  <text x="370" y="698" font-size="14" font-weight="700" fill="#1b1f27">NOTES</text>
+  <g font-size="13" fill="#1b1f27">
+    <circle cx="376" cy="722" r="4" fill="#1a6fd4"/><text x="390" y="727">Visitors reach the static site through CloudFront, which reads it from S3.</text>
+    <circle cx="376" cy="747" r="4" fill="#1a6fd4"/><text x="390" y="752">The contact form and visitor counter call /api/* on the same domain.</text>
+    <circle cx="376" cy="772" r="4" fill="#1a6fd4"/><text x="390" y="777">CloudFront forwards /api/* to API Gateway, which invokes Lambda.</text>
+    <circle cx="376" cy="797" r="4" fill="#1a6fd4"/><text x="390" y="802">Lambda saves to DynamoDB and emails contact messages through SES.</text>
+    <circle cx="376" cy="822" r="4" fill="#1a6fd4"/><text x="390" y="827">Everything bills per request, so an idle site costs almost nothing.</text>
+    <circle cx="376" cy="847" r="4" fill="#1a6fd4"/><text x="390" y="852">Errors raise a CloudWatch alarm that SNS emails to me.</text>
+    <circle cx="376" cy="872" r="4" fill="#1a6fd4"/><text x="390" y="877">ACM provides the TLS certificate that CloudFront serves.</text>
+  </g>
+
+  <!-- CI/CD flow -->
+  <rect x="930" y="670" width="440" height="225" rx="8" fill="#ffffff" stroke="#b9c0c9" stroke-width="1.5"/>
+  <text x="950" y="698" font-size="14" font-weight="700" fill="#1b1f27">CI/CD FLOW (GITHUB ACTIONS, OIDC)</text>
+
+  <rect x="950" y="716" width="84" height="44" rx="6" fill="#1b1f27"/>
+  <text x="992" y="735" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Push to</text>
+  <text x="992" y="751" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">main</text>
+  <line x1="1034" y1="738" x2="1058" y2="738" stroke="#ed7100" stroke-width="1.6" marker-end="url(#arrow-deploy)"/>
+  <rect x="1060" y="716" width="84" height="44" rx="6" fill="#ffffff" stroke="#1b1f27" stroke-width="1.5"/>
+  <text x="1102" y="735" font-size="12" font-weight="700" fill="#1b1f27" text-anchor="middle">Run unit</text>
+  <text x="1102" y="751" font-size="12" font-weight="700" fill="#1b1f27" text-anchor="middle">tests</text>
+  <line x1="1144" y1="738" x2="1168" y2="738" stroke="#ed7100" stroke-width="1.6" marker-end="url(#arrow-deploy)"/>
+  <rect x="1170" y="716" width="84" height="44" rx="6" fill="#ffffff" stroke="#1b1f27" stroke-width="1.5"/>
+  <text x="1212" y="735" font-size="12" font-weight="700" fill="#1b1f27" text-anchor="middle">Build Docker</text>
+  <text x="1212" y="751" font-size="12" font-weight="700" fill="#1b1f27" text-anchor="middle">image</text>
+  <line x1="1254" y1="738" x2="1278" y2="738" stroke="#ed7100" stroke-width="1.6" marker-end="url(#arrow-deploy)"/>
+  <rect x="1280" y="716" width="76" height="44" rx="6" fill="#ed7100"/>
+  <text x="1318" y="735" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Push to</text>
+  <text x="1318" y="751" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">ECR</text>
+
+  <path d="M1318 760 V800" fill="none" stroke="#ed7100" stroke-width="1.6" marker-end="url(#arrow-deploy)"/>
+
+  <rect x="1280" y="802" width="76" height="44" rx="6" fill="#ed7100"/>
+  <text x="1318" y="821" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Update</text>
+  <text x="1318" y="837" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Lambda</text>
+  <line x1="1280" y1="824" x2="1256" y2="824" stroke="#ed7100" stroke-width="1.6" marker-end="url(#arrow-deploy)"/>
+  <rect x="1170" y="802" width="84" height="44" rx="6" fill="#7aa116"/>
+  <text x="1212" y="821" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Sync site</text>
+  <text x="1212" y="837" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">to S3</text>
+  <line x1="1170" y1="824" x2="1146" y2="824" stroke="#ed7100" stroke-width="1.6" marker-end="url(#arrow-deploy)"/>
+  <rect x="1060" y="802" width="84" height="44" rx="6" fill="#8c4fff"/>
+  <text x="1102" y="821" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Refresh</text>
+  <text x="1102" y="837" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">CloudFront</text>
+  <line x1="1060" y1="824" x2="1036" y2="824" stroke="#ed7100" stroke-width="1.6" marker-end="url(#arrow-deploy)"/>
+  <rect x="950" y="802" width="84" height="44" rx="6" fill="#ffffff" stroke="#3f8624" stroke-width="1.5"/>
+  <text x="992" y="821" font-size="12" font-weight="700" fill="#3f8624" text-anchor="middle">Health</text>
+  <text x="992" y="837" font-size="12" font-weight="700" fill="#3f8624" text-anchor="middle">check</text>
+
+  <text x="950" y="878" font-size="12" fill="#57616d">No AWS keys stored in GitHub: short-lived credentials through OIDC</text>
+</svg>

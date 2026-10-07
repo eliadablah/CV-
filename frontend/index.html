@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--
+  My CV site.
+  This page is stored in S3 and sent to visitors by CloudFront.
+  The contact form and the visitor counter talk to my API at /api/...
+  My styles are in styles.css and my scripts are in the js folder.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elikem Adablah &mdash; Cloud &amp; DevOps</title>
+<meta name="description" content="Elikem Adablah - IT Support Technician (AWS Certified) building toward Cloud and DevOps engineering. Based in Dallas, TX.">
+<link rel="canonical" href="https://cv.eliadablah.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Elikem Adablah - Cloud & DevOps">
+<meta property="og:description" content="IT Support Technician (AWS Certified) building toward Cloud and DevOps engineering. Based in Dallas, TX.">
+<meta property="og:url" content="https://cv.eliadablah.com/">
+<meta property="og:image" content="https://cv.eliadablah.com/photo.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="navbar">
+  <nav class="pillnav" aria-label="Section navigation">
+    <a class="navlink" href="#about" data-nav="about">About</a>
+    <a class="navlink" href="#skills" data-nav="skills">Skills</a>
+    <a class="navlink" href="#experience" data-nav="experience">Experience</a>
+    <a class="navlink" href="#projects" data-nav="projects">Projects</a>
+    <a class="navlink" href="#contact" data-nav="contact">Contact</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <svg class="decor-star decor-star-top" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 5 3 9 6 12-3 1-5 5-6 12-1-5-3-9-6-12 3-1 5-5 6-12z"/></svg>
+  <svg class="decor-star decor-star-bottom" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 5 3 9 6 12-3 1-5 5-6 12-1-5-3-9-6-12 3-1 5-5 6-12z"/></svg>
+  <div class="wrap">
+    <span class="badge"><span class="dot"></span>IT Support Technician III &middot; moving into Cloud &amp; DevOps</span>
+    <h1>Hi, I&rsquo;m Elikem.<br><span>Cloud &amp; DevOps</span>, in progress.</h1>
+    <p class="lede">Turning hands-on IT support experience into cloud engineering skills, one project at a time &mdash; currently deepening AWS, CI/CD, and automation through a dedicated DevOps &amp; AI training program.</p>
+    <div class="contact-row">
+      <a class="contact-pill solid" href="mailto:elikadablah@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+        Email me
+      </a>
+      <a class="contact-pill" href="https://www.linkedin.com/in/elikem-adablah-92978235b">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.9 8.6L10.5 16M16.1 8.6L13.5 16M8.2 7h7.6"/></svg>
+        LinkedIn
+      </a>
+      <a class="contact-pill" href="https://github.com/eliadablah">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg>
+        GitHub
+      </a>
+      <span class="contact-pill static">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        Dallas, TX
+      </span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="about">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h2 class="title">Support tech by day, building cloud skills every day after.</h2>
+      <div class="about-grid">
+        <div>
+          <div class="about-photo-wrap">
+            <img class="about-photo" src="photo.png" alt="Portrait of Elikem Adablah" />
+            <div>
+              <h3>Elikem Adablah</h3>
+              <div class="role">IT Support &rarr; Cloud/DevOps</div>
+            </div>
+          </div>
+          <p class="about-bio">IT support technician with hands-on cloud experience from a short-term engineering contract, now working toward a full move into cloud and DevOps roles. Comfortable troubleshooting complex issues under pressure, and quick to pick up new cloud platforms &mdash; through structured training and by learning directly alongside engineers on the job.</p>
+        </div>
+        <div class="facts-grid">
+          <div class="fact-tile">
+            <div class="flabel">Location</div>
+            <div class="fvalue">Dallas, TX</div>
+          </div>
+          <div class="fact-tile">
+            <div class="flabel">Education</div>
+            <div class="fvalue">B.S. Information Technology</div>
+            <div class="fsub">University of Texas at Tyler &middot; Dec 2025 &middot; 3.4 GPA</div>
+          </div>
+          <div class="fact-tile">
+            <div class="flabel">Certifications</div>
+            <div class="fvalue"><a href="https://www.credly.com/badges/91e98162-e6cb-436e-a9f7-430d2b35bfe3/linked_in">AWS SAA</a> &middot; AWS CCP</div>
+            <div class="fsub">Google Data Analytics Certification</div>
+          </div>
+          <div class="fact-tile">
+            <div class="flabel">Currently</div>
+            <div class="fvalue">DevOps &amp; AI Training<span class="cert-badge">In Progress</span></div>
+            <div class="fsub">UTrains</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h2 class="title">What I actually work with</h2>
+      <p class="dek">Grouped by what each toolset is for, not just the acronyms.</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="shead">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="16" cy="12" r="2"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="11" cy="18" r="2"/></svg>
+            <h3>Cloud Platforms</h3>
+          </div>
+          <p class="snote">Hosting apps and storing/moving/analyzing data in the cloud</p>
+          <div class="chips">
+            <span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">CodePipeline</span><span class="chip">S3</span><span class="chip">DynamoDB</span><span class="chip">CloudFront</span><span class="chip">Athena</span><span class="chip">Glue</span><span class="chip">CloudFormation</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="shead">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+            <h3>Security &amp; Access</h3>
+          </div>
+          <p class="snote">Keeping systems, logins, and data safe</p>
+          <div class="chips">
+            <span class="chip">OAuth</span><span class="chip">RBAC</span><span class="chip">IAM</span><span class="chip">Cloud Security</span><span class="chip">SIEM</span><span class="chip">SonarQube</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="shead">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 14 12 19 21 14"/></svg>
+            <h3>DevOps &amp; Data</h3>
+          </div>
+          <p class="snote">Automating how code and data get built &amp; deployed</p>
+          <div class="chips">
+            <span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions</span><span class="chip">Jenkins</span><span class="chip">Terraform</span><span class="chip">Python</span><span class="chip">PySpark</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="shead">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M3 13h18"/></svg>
+            <h3>Support &amp; Ticketing</h3>
+          </div>
+          <p class="snote">Managing and resolving customer support requests</p>
+          <div class="chips">
+            <span class="chip">Freshdesk</span><span class="chip">Jira</span><span class="chip">ServiceNow</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="shead">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3>Core Strengths</h3>
+          </div>
+          <div class="chips">
+            <span class="chip soft">Collaboration</span><span class="chip soft">Communication</span><span class="chip soft">Problem-Solving</span><span class="chip soft">Adaptability</span><span class="chip soft">Attention to Detail</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <p class="eyebrow">Experience</p>
+      <h2 class="title">Where I&rsquo;ve worked</h2>
+
+      <div class="job">
+        <div class="job-rail"></div>
+        <div class="job-body">
+          <div class="job-top">
+            <span class="job-title">Generalist Expert <span class="job-note">&middot; Independent Contractor</span></span>
+            <span class="job-dates">Aug 2026 &ndash; Oct 2026</span>
+          </div>
+          <div class="job-company">Mercor <span class="loc">&middot; Remote</span></div>
+          <ul>
+            <li>Evaluated AI-generated responses against structured guidelines, writing clear, evidence-based rationales that supported training projects for large language models.</li>
+            <li>Read closely to catch nuance, missing context, and gaps in reasoning in AI-written content.</li>
+            <li>Worked fully remote and self-directed, keeping accuracy and attention to detail consistent across every review.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-rail"></div>
+        <div class="job-body">
+          <div class="job-top">
+            <span class="job-title">Support Technician</span>
+            <span class="job-dates">Aug 2025 &ndash; Present<span class="pill-current">Current</span></span>
+          </div>
+          <div class="job-company">EZLynx (Applied Systems) <span class="loc">&middot; Remote</span></div>
+          <ul>
+            <li>Provide technical support for enterprise insurance software, resolving issues through Freshdesk and Jira ticket workflows.</li>
+            <li>Work with cross-functional teams to keep systems integrated and running reliably.</li>
+            <li>Maintain internal documentation and knowledge-base articles for common issues.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-rail"></div>
+        <div class="job-body">
+          <div class="job-top">
+            <span class="job-title">Cloud Engineering <span class="job-note">&middot; Contract, job-shadow basis</span></span>
+            <span class="job-dates">Dec 2025 &ndash; Mar 2026</span>
+          </div>
+          <div class="job-company">Novrupt <span class="loc">&middot; Dallas, TX</span></div>
+          <ul>
+            <li>Shadowed engineers building web APIs and learned how login systems (OAuth) and access permissions (RBAC) keep cloud applications secure.</li>
+            <li>Helped move and organize data into cloud storage (Amazon S3) and databases (DynamoDB) using AWS Glue &mdash; an intro to how ETL (Extract, Transform, Load) pipelines work.</li>
+            <li>Learned to query stored data directly in the cloud with AWS Athena, without needing to manage a traditional database server.</li>
+            <li>Supported automated testing and deployment pipelines (CI/CD) built with GitHub Actions and Jenkins.</li>
+            <li>Helped build small Python scripts for tracking cloud spend across AWS and Azure.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-rail"></div>
+        <div class="job-body">
+          <div class="job-top">
+            <span class="job-title">Information Technology Intern</span>
+            <span class="job-dates">May 2024 &ndash; Aug 2024</span>
+          </div>
+          <div class="job-company">Southside Bank <span class="loc">&middot; Tyler, TX</span></div>
+          <ul>
+            <li>Assisted with cybersecurity operations, vulnerability assessments, and infrastructure configuration.</li>
+            <li>Gained hands-on exposure to identity and access management (IAM), security operations, and core networking.</li>
+            <li>Supported digital banking optimization projects aimed at operational efficiency.</li>
+            <li>Resolved hardware and software issues for corporate staff.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap">
+      <p class="eyebrow">Projects</p>
+      <h2 class="title">Things I&rsquo;ve built</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>This CV Site on AWS</h3>
+          <p class="project-stack">Terraform &middot; Docker &middot; Lambda &middot; CloudFront &middot; GitHub Actions</p>
+          <p class="desc">The site you are on right now. I built it to run on AWS for under $1 a month: the pages come from S3 and CloudFront, and the contact form and visitor counter run on Lambda and DynamoDB. All of it is written as code in Terraform.</p>
+        </div>
+        <div class="project-card">
+          <h3>Budget Tracker with Bank Link</h3>
+          <p class="project-stack">React &middot; TypeScript &middot; Lambda &middot; Plaid &middot; Cognito &middot; Terraform</p>
+          <p class="desc">A private dashboard for my to-do list and my money. It connects to bank accounts through Plaid, sits behind a login, and keeps its keys in a secure store. It tests and deploys itself with GitHub Actions.</p>
+          <a class="project-link" href="https://github.com/eliadablah/budget-app-tracker">View on GitHub &rarr;</a>
+        </div>
+        <div class="project-card">
+          <h3>Student Portal on a 3&#8209;Tier AWS Network</h3>
+          <p class="project-stack">Terraform &middot; VPC &middot; Load Balancer &middot; Auto Scaling &middot; RDS &middot; Node.js</p>
+          <p class="desc">The UTC Student Services Portal, a UTC project that we actually built and ran on AWS. Only the load balancer is public; the servers and MySQL database stay private across three zones. It has HTTPS, scaling, alarms, and passwords kept in Secrets Manager. One Terraform command builds it and one tears it down.</p>
+          <a class="project-link" href="https://github.com/eliadablah/utcapp">View on GitHub &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="contact-panel">
+        <h2>Let&rsquo;s connect</h2>
+        <p>Open to Cloud Support, Junior SysAdmin, and DevOps-track roles &mdash; if you think there's a fit, I'd love to hear from you.</p>
+        <div class="contact-row">
+          <a class="contact-pill solid" href="mailto:elikadablah@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+            Email
+          </a>
+          <a class="contact-pill" href="https://www.linkedin.com/in/elikem-adablah-92978235b">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.9 8.6L10.5 16M16.1 8.6L13.5 16M8.2 7h7.6"/></svg>
+            LinkedIn
+          </a>
+          <a class="contact-pill" href="https://github.com/eliadablah">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg>
+            GitHub
+          </a>
+        </div>
+
+        <!-- Contact form. It sends the inquiry to /api/contact, which saves it and emails me. -->
+        <form class="contact-form" id="contactForm" novalidate>
+          <p class="form-intro">Or send a message right here &mdash; it lands in my inbox.</p>
+          <div class="form-grid">
+            <label class="field">
+              <span class="field-label">Name</span>
+              <input type="text" name="name" autocomplete="name" maxlength="100" required>
+            </label>
+            <label class="field">
+              <span class="field-label">Email</span>
+              <input type="email" name="email" autocomplete="email" maxlength="254" required>
+            </label>
+          </div>
+          <div class="form-grid">
+            <label class="field">
+              <span class="field-label">Company <span class="field-optional">(optional)</span></span>
+              <input type="text" name="company" autocomplete="organization" maxlength="100">
+            </label>
+            <label class="field">
+              <span class="field-label">Phone <span class="field-optional">(optional)</span></span>
+              <input type="tel" name="phone" autocomplete="tel" maxlength="20">
+            </label>
+          </div>
+          <label class="field">
+            <span class="field-label">Reason for contact</span>
+            <!-- These values must match REASONS in backend/app/contact.py -->
+            <select name="reason">
+              <option value="job">Job opportunity</option>
+              <option value="freelance">Freelance or contract work</option>
+              <option value="networking">Networking</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Message</span>
+            <textarea name="message" rows="5" maxlength="2000" required></textarea>
+          </label>
+          <!-- Spam trap. People can't see this box, but spam bots fill it in. If it is filled in, I ignore the message. -->
+          <label class="hp-field" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+          <button class="contact-pill solid form-submit" type="submit">Send message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sitefoot">
+    Built by Elikem Adablah.
+    <span class="visit-count" id="visitCount" hidden></span>
+  </footer>
+</main>
+
+<button class="chat-toggle" id="chatToggle" aria-label="Open FAQ chat about Elikem">
+  <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="FAQ chat about Elikem">
+  <div class="chat-head">
+    <img src="photo.png" alt="" />
+    <div>
+      <div class="chn">Ask about Elikem</div>
+      <div class="chs">Automated FAQ &middot; not a live person</div>
+    </div>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Ask a question..." aria-label="Type a question" />
+    <button class="chat-send" id="chatSend" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="js/config.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/faq-chat.js" defer></script>
+<script src="js/contact-form.js" defer></script>
+<script src="js/visitor-counter.js" defer></script>
+</body>
+</html>

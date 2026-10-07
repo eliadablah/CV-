@@ -1,0 +1,4 @@
+# Copy this file, name the copy terraform.tfvars, and put your email in it.
+# Git ignores terraform.tfvars, so my real address is not uploaded.
+
+notification_email = "you@example.com"
