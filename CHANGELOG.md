@@ -4,9 +4,13 @@
 
 ### CI/CD — Point the deploy pipeline at the `CV-` repository
 
-- `github_repo` now defaults to `eliadablah/CV-`, so the deploy role's trust
-  policy accepts GitHub Actions runs from that repository's `main` branch.
-- Applied with Terraform: one in-place change to `aws_iam_role.deploy`.
+- The deploy role's trust policy now accepts GitHub Actions runs from the
+  `main` branch of `eliadablah/CV-` (it previously named `eliadablah/eliadablahcv`).
+- Replaced the `github_repo` variable with `github_oidc_subject_prefix`. GitHub
+  issues this repository's OIDC subject in its immutable form, with the owner
+  and repository IDs included (`repo:eliadablah@232940632/CV-@1408079494`), so
+  a trust rule written with names alone never matches.
+- Applied with Terraform: in-place changes to `aws_iam_role.deploy` only.
 - Added the six repository variables the workflow reads (`AWS_ROLE_ARN`,
   `ECR_REPOSITORY_URL`, `LAMBDA_FUNCTION_NAME`, `FRONTEND_BUCKET`,
   `DISTRIBUTION_ID`, `SITE_URL`) to `CV-`.

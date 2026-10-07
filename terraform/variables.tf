@@ -45,10 +45,10 @@ variable "monthly_budget_usd" {
   default     = 10
 }
 
-variable "github_repo" {
-  description = "GitHub repository (owner/name) allowed to deploy through GitHub Actions"
+variable "github_oidc_subject_prefix" {
+  description = "How GitHub names my repository in its OIDC login pass. GitHub now adds the owner and repository ID numbers after each name, so a renamed or re-created repository can never pass as this one. I read it with: gh api repos/eliadablah/CV-/actions/oidc/customization/sub"
   type        = string
-  default     = "eliadablah/CV-"
+  default     = "repo:eliadablah@232940632/CV-@1408079494"
 }
 
 variable "create_github_oidc_provider" {
