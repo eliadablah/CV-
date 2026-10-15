@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-10-15
+
+### Content — Align experience and projects with current resume
+
+- EZLynx (Applied Systems) title now reads `IT Support Technician III`, with
+  bullets for tier-three escalations, plain-language fixes, engineering
+  escalations and ticket-trend spotting.
+- Novrupt entry now reads `Cloud Engineering Intern`, `Dec 2025 – May 2026`,
+  Dallas, TX (Remote). The About bio and FAQ chat call it an internship.
+- Mercor title now reads `AI Generalist Expert · Contract`, with bullets for
+  grading AI responses, validating AI-generated scripts, and writing reference
+  troubleshooting solutions.
+- Southside Bank support bullet now includes connectivity issues.
+- Added project cards for "Scalable Serverless Web Application" and
+  "CI/CD Pipeline Implementation"; the FAQ "projects" answer mentions them.
+
 ## 2026-10-06
 
 ### CI/CD — Point the deploy pipeline at the `CV-` repository
