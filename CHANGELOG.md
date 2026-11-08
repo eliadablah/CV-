@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-11-07
+
+### Content — Add the Jarvis project
+
+- Added a first project card, "Jarvis: Personal AI Assistant", linking to
+  `https://github.com/eliadablah/Jarvis`. It describes the assistant, the tested
+  GitHub Actions pipeline, the private AWS servers built with Terraform, and the
+  approval gate before production. No server addresses, keys or other private
+  details are on the page.
+- The FAQ chat "projects" answer now mentions Jarvis (and answers to the
+  keywords "jarvis" and "ai assistant").
+- Not yet deployed: the change is local until it is committed and pushed.
+
 ## 2026-10-15
 
 ### Content — Align experience and projects with current resume
